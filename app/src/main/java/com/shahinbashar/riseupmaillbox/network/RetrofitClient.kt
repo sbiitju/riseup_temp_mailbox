@@ -2,6 +2,7 @@ package com.shahinbashar.test.remote
 
 import android.app.Application
 import com.google.gson.GsonBuilder
+import com.shahinbashar.riseupmaillbox.model.offline_data.SharedPrefInterface
 import com.shahinbashar.riseupmaillbox.utils.Const
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -40,7 +41,6 @@ object RetrofitClient {
         }
 }
 class TokenInterceptor : Interceptor, Application() {
-    //    val offlineInformation = OfflineInformation(applicationContext)
     override fun intercept(chain: Interceptor.Chain): Response {
         val newRequest: Request = chain.request().newBuilder()
             .header("Authorization", "Bearer ${Const.JWToken}")

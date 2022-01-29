@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RiseUp MaillBox</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_riseup_temp_mail_service">Welcome to <b>RiseUp Temp Mail</b> Service</string>
+    <string name="guideline"><u>\t \t \t \t \t \t \t \t \t \t  User Guidelines\t \t \t \t\t \t \t \t \t \t</u>\n\nStep 01: Create an Account using your domain based mail (ex: <b>yourname@your_domain</b>)\nStep 02: Check Your Inbox</string>
 </resources>
