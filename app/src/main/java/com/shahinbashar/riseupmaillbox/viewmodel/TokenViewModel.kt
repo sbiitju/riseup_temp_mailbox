@@ -15,14 +15,18 @@ import retrofit2.Response
 import javax.inject.Inject
 @HiltViewModel
 class TokenViewModel @Inject constructor(private val repository: TokenRepository) : ViewModel() {
+    val email=MutableLiveData<String>()
+    val password=MutableLiveData<String>()
     private val _response=MutableLiveData<TokenModel>()
     val responseToken:LiveData<TokenModel> get() = _response
     init {
+        email.postValue("shahin@sinaite.net")
+        password.postValue("123456")
         getTokenValue()
     }
 
     private fun getTokenValue(){
-        val call: Call<TokenModel> = repository.getToken()
+        val call: Call<TokenModel> = repository.getToken(email.value.toString(),password.value.toString())
         call.enqueue(object : Callback<TokenModel> {
 
             // if retrofit network call success, this method will be triggered
@@ -34,6 +38,7 @@ class TokenViewModel @Inject constructor(private val repository: TokenRepository
                     _response.postValue(response.body())
                 }else{
                     Log.d("Shahin Bashar","Error hoyse")
+                    Log.d(email.value.toString(),password.value.toString())
                 }
 
             }

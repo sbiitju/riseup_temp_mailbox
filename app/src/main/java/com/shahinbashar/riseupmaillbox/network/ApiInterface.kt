@@ -12,6 +12,7 @@ interface ApiInterface {
     @GET("domains")
     fun getDomain(): Call<DomainModel>
 
+    @FormUrlEncoded
     @POST("token")
     fun getToken(
         @Field("address") address: String,

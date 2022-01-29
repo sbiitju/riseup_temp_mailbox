@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import com.shahinbashar.riseupmaillbox.databinding.ActivityMainBinding
 import com.shahinbashar.riseupmaillbox.viewmodel.AccountViewModel
 import com.shahinbashar.riseupmaillbox.viewmodel.DomainViewModel
+import com.shahinbashar.riseupmaillbox.viewmodel.InboxViewModel
 import com.shahinbashar.riseupmaillbox.viewmodel.TokenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProvider(this).get(TokenViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(InboxViewModel::class.java)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.responseToken.value?.let { Log.d("Final data", it.token.toString()) }
+        viewModel.inboxInfo.value?.let { Log.d("Final data", it.hydramember.toString()) }
         Log.d("Final data","Shahin Bashar")
 
     }
