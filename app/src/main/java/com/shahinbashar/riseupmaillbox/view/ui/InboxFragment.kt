@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import com.shahinbashar.riseupmaillbox.R
 import com.shahinbashar.riseupmaillbox.common.CommonListener
 import com.shahinbashar.riseupmaillbox.databinding.FragmentHomeBinding
@@ -19,18 +20,19 @@ import dagger.hilt.android.AndroidEntryPoint
 class InboxFragment : Fragment() ,CommonListener{
     private lateinit var _viewbinding: FragmentInboxBinding
     val viewbinding get() = _viewbinding
-    private val viewmodel by activityViewModels<InboxViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toast.makeText(requireContext(),
-            viewmodel.inboxInfo.value?.hydramember?.get(0)?.subject + viewmodel.inboxInfo.value?.hydramember?.get(0)?.from?.address,Toast.LENGTH_LONG).show()
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _viewbinding= FragmentInboxBinding.inflate(inflater,container,false)
+        var viewmodel=ViewModelProvider(this)[InboxViewModel::class.java]
+        viewbinding.model=viewmodel
+        viewbinding.textEmail.text=viewmodel.messege.value
+        viewbinding.lifecycleOwner=this
         return viewbinding.root
     }
 

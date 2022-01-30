@@ -11,9 +11,10 @@ import com.google.gson.Gson
 import com.shahinbashar.riseupmaillbox.common.CommonListener
 import com.shahinbashar.riseupmaillbox.model.Params
 import com.shahinbashar.riseupmaillbox.model.data_class.token.TokenModel
-import com.shahinbashar.riseupmaillbox.model.offline_data.SharedPref
-import com.shahinbashar.riseupmaillbox.model.offline_data.SharedPrefInterface
 import com.shahinbashar.riseupmaillbox.model.repository.LoginRepository
+import com.shahinbashar.riseupmaillbox.utils.Const
+import com.shahinbashar.riseupmaillbox.utils.shared_preference.SessionModel
+import com.shahinbashar.riseupmaillbox.utils.shared_preference.SharedPref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Call
@@ -24,10 +25,10 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repository: LoginRepository,@ApplicationContext context: Context) : ViewModel() {
     private val _response=MutableLiveData<TokenModel>()
     val responseToken:LiveData<TokenModel> get() = _response
+    var sharedPref=SharedPref(context)
     var email=MutableLiveData<String>()
     var password=MutableLiveData<String>()
     var commonListener: CommonListener?=null
-    var sharedPrefInterface:SharedPref=SharedPref(context)
     val accountStatus get() = _response
     fun onEmailChange(char: CharSequence,start:Int,end:Int,count:Int){
         email.postValue(char.toString())
@@ -59,8 +60,11 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
                     commonListener?.onSuccess("You have Successfully Loged In")
 
                     response.body()!!.token?.let { Log.d("Shahin Bashar", it)
+                        var sessionModel:SessionModel= SessionModel(it,true)
+                        sharedPref.saveData(sessionModel)
+                        Const.JWToken=sharedPref.getData().JWToken
+                        commonListener?.onNavigate()
                     }
-                    commonListener?.onNavigate()
                 }else{
                     commonListener?.onFailed("Failed")
                 }
