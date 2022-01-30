@@ -1,23 +1,29 @@
 package com.shahinbashar.riseupmaillbox.viewmodel
 
+import android.app.AlertDialog
+import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.shahinbashar.riseupmaillbox.model.data_class.create.AccountCreateModel
 import com.shahinbashar.riseupmaillbox.model.repository.InboxRepository
+import com.shahinbashar.test.data.Hydramember
 import com.shahinbashar.test.data.MessegeModel
-import com.shahinbashar.test.data.domain.DomainModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
+
 @HiltViewModel
-class InboxViewModel @Inject constructor(private val repository: InboxRepository):ViewModel() {
-    private val _response= MutableLiveData<MessegeModel>()
+class InboxViewModel @Inject constructor(private val repository: InboxRepository) : ViewModel() {
+    private var _response = MutableLiveData<MessegeModel>()
     val inboxInfo get() = _response
-    init {
+    var messege:MutableLiveData<String> =MutableLiveData<String>()
+    fun onClick(view: View) {
         getInboxData()
+
     }
 
     private fun getInboxData() {
@@ -29,11 +35,15 @@ class InboxViewModel @Inject constructor(private val repository: InboxRepository
                 call: Call<MessegeModel>,
                 response: Response<MessegeModel>
             ) {
-                if (response.body()!=null){
+                if (response.body() != null) {
                     _response.postValue(response.body())
-                    Log.d("Shahin Bashar",response.body().toString())
-                }else{
-                    Log.d("Shahin Bashar","Error hoyse")
+//                    makeAlertDialog(response.body()!!.hydramember)
+                    var temp = response.body()!!.hydramember.forEach {
+                        messege.postValue("From: " + it.from!!.address + "\nSender Name: " + it.from!!.name + "\nSubject: " + it.subject + "\n Email: " + it.intro)
+                    }
+                    Log.d("Result", response.body()!!.hydramember.toString())
+                } else {
+                    Log.d("Shahin Bashar", "Error hoyse")
                 }
 
             }
@@ -43,4 +53,11 @@ class InboxViewModel @Inject constructor(private val repository: InboxRepository
             }
         })
     }
+
+//    private fun makeAlertDialog(hydramember: ArrayList<Hydramember>) {
+//        var dialog:AlertDialog.Builder=AlertDialog.Builder(context)
+//        dialog.setTitle("Inbox")
+
+//        dialog.show()
+//    }
 }

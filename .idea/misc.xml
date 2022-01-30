@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/activity_messege.xml" value="0.16485507246376813" />
         <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/fragment_inbox.xml" value="0.19322916666666667" />
-        <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/fragment_login.xml" value="0.16485507246376813" />
+        <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/fragment_registration.xml" value="0.14" />
+        <entry key="..\:/Development/RiseUpMaillBox/app/src/main/res/layout/messge.xml" value="0.16485507246376813" />
       </map>
     </option>
   </component>

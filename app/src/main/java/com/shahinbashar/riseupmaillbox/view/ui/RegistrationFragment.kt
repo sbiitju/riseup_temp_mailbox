@@ -38,8 +38,8 @@ class RegistrationFragment : Fragment(),CommonListener{
 
     override fun onSuccess(msg:String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-        val action=RegistrationFragmentDirections.actionRegistrationFragmentToInboxFragment()
-        findNavController().navigate(action)
+//        val action=RegistrationFragmentDirections.actionRegistrationFragmentToInboxFragment()
+//        findNavController().navigate(action)
     }
 
     override fun onFailed(msg: String) {

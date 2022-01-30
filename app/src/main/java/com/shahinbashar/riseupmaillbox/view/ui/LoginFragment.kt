@@ -8,11 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.shahinbashar.riseupmaillbox.R
 import com.shahinbashar.riseupmaillbox.common.CommonListener
 import com.shahinbashar.riseupmaillbox.databinding.FragmentLoginBinding
-import com.shahinbashar.riseupmaillbox.databinding.FragmentRegistrationBinding
-import com.shahinbashar.riseupmaillbox.viewmodel.AccountViewModel
 import com.shahinbashar.riseupmaillbox.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +31,7 @@ class LoginFragment : Fragment() ,CommonListener{
 
     override fun onSuccess(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onFailed(msg: String) {

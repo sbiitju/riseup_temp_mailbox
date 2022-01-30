@@ -39,11 +39,11 @@ android {
 }
 
 dependencies {
+    def retrofit_version = "2.9.0"
+    def nav_version_ktx = "2.1.0-beta01"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-    def retrofit_version = "2.9.0"
-    def nav_version_ktx = "2.1.0-beta01"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version_ktx"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version_ktx"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -70,6 +70,16 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
     implementation "androidx.activity:activity-ktx:1.4.0"
+    /** RecyclerView Dependency added here **/
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    // For control over item selection of both touch and mouse driven selection
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+
+    /** Card View decpendecy*/
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    /** Material decpendecy*/
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
 }
 // Allow references to generated code
 kapt {

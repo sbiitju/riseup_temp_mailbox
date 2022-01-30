@@ -2,7 +2,6 @@ package com.shahinbashar.test.remote
 
 import android.app.Application
 import com.google.gson.GsonBuilder
-import com.shahinbashar.riseupmaillbox.model.offline_data.SharedPrefInterface
 import com.shahinbashar.riseupmaillbox.utils.Const
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -25,14 +24,14 @@ object RetrofitClient {
                     if (retrofit == null) {
 
                         val httpClient = OkHttpClient.Builder()
-                                .addInterceptor(TokenInterceptor())
+                            .addInterceptor(TokenInterceptor())
                         val client = httpClient.build()
 
                         retrofit = Retrofit.Builder()
-                                .baseUrl(Const.BASE_URL)
-                                .addConverterFactory(GsonConverterFactory.create(gson))
-                                .client(client)
-                                .build()
+                            .baseUrl(Const.BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .client(client)
+                            .build()
                     }
                 }
 

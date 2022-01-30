@@ -74,7 +74,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:onClick="@{model::onRegisstration}"
             android:text="Create Account"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -88,18 +88,30 @@
             android:id="@+id/textView"
             android:layout_width="145dp"
             android:layout_height="55dp"
-            android:text="Click here to login"
-            android:textColor="#304FFE"
-            android:textStyle="bold"
-            android:textAlignment="center"
             android:gravity="center"
             android:onClick="@{model::onLogin}"
+            android:text="Click here to login"
+            android:textAlignment="center"
+            android:textColor="#304FFE"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.834"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.784" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="268dp"
+            android:layout_height="42dp"
+            android:text="This Domain Comes From Server"
+            app:layout_constraintBottom_toTopOf="@+id/domainNameTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.878" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
